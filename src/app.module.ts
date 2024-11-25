@@ -35,7 +35,7 @@ import { ProductsModule } from './products/products.module';
     AuthModule,
     ProductsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

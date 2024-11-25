@@ -7,13 +7,15 @@ export class ProductsService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createProduct(data: CreateProductRequest, userId: number) {
-    try {
-      return await this.prismaService.product.create({
-        data: {
-          ...data,
-          userId: userId,
-        },
-      });
-    } catch (err) {}
+    return await this.prismaService.product.create({
+      data: {
+        ...data,
+        userId: userId,
+      },
+    });
+  }
+
+  async getProducts() {
+    return await this.prismaService.product.findMany();
   }
 }
