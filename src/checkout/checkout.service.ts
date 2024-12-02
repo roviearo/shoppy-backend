@@ -37,14 +37,16 @@ export class CheckoutService {
   }
 
   async handleCheckoutWebhook(event: any) {
-    if (event.type !== 'checkout_session_completed') {
-      return;
-    }
+    // if (event.type !== 'checkout_session_completed') {
+    //   return;
+    // }
+    // const test = await this.stripe.checkout.sessions.list();
+    // console.log(event.data);
+    // console.log(event);
 
     const session = await this.stripe.checkout.sessions.retrieve(
       event.data.object.id,
     );
-
     await this.productsService.update(parseInt(session.metadata.productId), {
       sold: true,
     });
